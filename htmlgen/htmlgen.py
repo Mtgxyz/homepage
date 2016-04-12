@@ -14,7 +14,7 @@ class HTMLgen:
         nav=""
         x=0
         for title in self.titles:
-            nav=nav+("<a href=\"#%i\">%s</a>" % (x, title))
+            nav=nav+("<a href=\"#%i\">%s</a><br/>" % (x, title))
             x=x+1
         main=""
         x=0
