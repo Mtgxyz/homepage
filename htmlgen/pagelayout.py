@@ -45,6 +45,7 @@ def getLayoutXML():
     asidespoiler = SubElement(tablerow, "div")
     asidespoiler.set("class", "spoiler")
     asidespoiler.set("tabindex", "2")
+    asidespoiler.text="Aside information"
     aside = SubElement(tablerow, "aside")
     aside.set("class", "spoilerContent")
     aside.text="%(aside)s"
