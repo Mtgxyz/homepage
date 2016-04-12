@@ -25,6 +25,7 @@ def getLayoutXML():
     meta.set("content", "width=device-width, initial-scale=1.0")
     topLink = SubElement(body, "a")
     topLink.set("id", "top")
+    topLink.text="\n"
     title2 = SubElement(body, "h1")
     title2.text = "%(title)s"
     hr1 = SubElement(body, "hr")
