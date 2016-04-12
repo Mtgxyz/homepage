@@ -11,4 +11,5 @@ test
 
 
 **TEST**""")
+print("<!DOCTYPE html>")
 print(html.renderSite())
