@@ -27,6 +27,7 @@ def getLayoutXML():
     topLink.set("id", "top")
     title2 = SubElement(body, "h1")
     title2.text = "%(title)s"
+    hr1 = SubElement(body, "hr")
     table = SubElement(body, "div")
     table.set("class", "table")
     tablerow = SubElement(table, "div")
@@ -46,6 +47,7 @@ def getLayoutXML():
     aside = SubElement(tablerow, "aside")
     aside.set("class", "spoilerContent")
     aside.text="%(aside)s"
+    hr2 = SubElement(body, "hr")
     footer = SubElement(body, "footer")
     footer.text="%(footer)s"
     upbar = SubElement(body, "a")
