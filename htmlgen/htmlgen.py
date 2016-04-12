@@ -21,5 +21,5 @@ class HTMLgen:
         for article in self.articles:
             main=main+("<h2 id=\"%i\">%s</h2><article>%s</article>" %(x,self.titles[x],article))
             x=x+1
-        styleargs = {"title":self.title,"nav":nav,"main":main,"aside":"","footer":"Copyright 2016 Morten"}
+        styleargs = {"title":self.title,"nav":nav,"main":main,"aside":str(x),"footer":"Copyright 2016 Morten"}
         return self.layout%styleargs
