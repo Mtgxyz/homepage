@@ -9,16 +9,16 @@ from captcha.image import ImageCaptcha
 import time, string
 print("Content-type: text/html\r\n\r\n")
 form=cgi.FieldStorage()
-aid=form["aid"]
+aid=form["aid"].value
 try:
-    seed=form["seed"]
+    seed=form["seed"].value
     random.seed(seed)
     checkstr=list("".join(random.choice(string.digits+string.ascii_lowercase) for _ in range(5)))
-    if not checkstr == form["checkstr"]:
+    if not checkstr == form["checkstr"].value:
         print("Captcha's wrong")
         raise Exception()
-    username=form["username"]
-    message=form["message"]
+    username=form["username"].value
+    message=form["message"].value
     timestamp=int(time.time())
     data={"name":"","markdown":message,"author":username,"date":timestamp}
     storage.append("comments-%i"%aid,data)
