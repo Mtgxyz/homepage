@@ -41,3 +41,6 @@ html.appendHTML("<input type=\"submit\" /></form>")
 count=storage.count("comments-%i"%aid)
 for i in range(count):
     html.addArticle(**(storage.get("comments-%i"%aid,i)))
+
+print("<!DOCTYPE html>")
+print(html.renderSite())
