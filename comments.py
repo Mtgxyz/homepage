@@ -19,11 +19,15 @@ try:
         print("Captcha's wrong")
         raise SyntaxError()
     username=form["username"].value
-    message=form["message"].value
+    try:
+        message=form["message"].value
+    except:
+        raise SyntaxError()
     timestamp=int(time.time())
     data={"name":"","markdown":message,"author":username,"date":timestamp}
     storage.append("comments-%i"%aid,data)
 except KeyError:
+
     pass
 
 
