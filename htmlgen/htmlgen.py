@@ -1,6 +1,7 @@
 import cgitb
 import markdown2
 import datetime
+import storage
 cgitb.enable()
 class HTMLgen:
     def __init__(self, layout, title):
@@ -10,21 +11,27 @@ class HTMLgen:
         self.authors=[]
         self.dates=[]
         self.title=title
+        self.asideHTML=""
     def addArticle(self, name, markdown, author="darklink", date=0):
         self.articles.append(markdown2.markdown(markdown, extras=["tables","spoiler"]))
         self.titles.append(name)
         self.authors.append(author)
         self.dates.append(date)
+    def prependHTML(self, text):
+        self.asideHTML=text+self.asideHTML
+    def appendHTML(self, text):
+        self.asideHTML=self.asideHTML+text
     def renderSite(self):
         nav=""
-        x=0
-        for title in self.titles:
+        x=len(self.titles)-1
+        for title in self.titles[::-1]:
             nav=nav+("<a href=\"#%i\">%s</a><br/>" % (x, title))
-            x=x+1
+            x=x-1
         main=""
-        x=0
-        for article in self.articles:
+        x=len(self.articles)-1
+        for article in self.articles[::-1]:
             main=main+("<h2 id=\"%i\">%s</h2><p>Written on <time datetime=\"%s\">%s</time> by %s</p><article>%s</article>" %(x,self.titles[x],datetime.datetime.fromtimestamp(self.dates[x]).strftime("%Y-%m-%d %H:%M:%S"),datetime.datetime.fromtimestamp(self.dates[x]).strftime("%c"),self.authors[x],article))
-            x=x+1
-        styleargs = {"title":self.title,"nav":nav,"main":main,"aside":str(x),"footer":"Copyright 2016 Morten"}
+            main=main+("<a href=\"comments.py?aid=%i\">Comments (%i)</a>") % (x, storage.count("comments-%i"%x))
+            x=x-1
+        styleargs = {"title":self.title,"nav":nav,"main":main,"aside":asideHTML,"footer":"Copyright 2016 Morten"}
         return self.layout%styleargs
