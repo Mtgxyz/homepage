@@ -6,7 +6,7 @@ import random
 import base64
 from io import BytesIO
 from captcha.image import ImageCaptcha
-import time
+import time, string
 print("Content-type: text/html\r\n\r\n")
 form=cgi.FieldStorage()
 aid=form["aid"]
