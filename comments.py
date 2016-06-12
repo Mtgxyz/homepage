@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from htmlgen import *
+import traceback
 import storage
 import cgi
 import random
@@ -23,6 +24,7 @@ try:
     data={"name":"","markdown":message,"author":username,"date":timestamp}
     storage.append("comments-%i"%aid,data)
 except:
+    traceback.print_exc()
     pass
 
 seed=random.SystemRandom().randint(0,2**24)
