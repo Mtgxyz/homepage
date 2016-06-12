@@ -11,23 +11,29 @@ import time, string
 print("Content-type: text/html\r\n\r\n")
 form=cgi.FieldStorage()
 aid=int(form["aid"].value)
+print("1")
 try:
     seed=int(form["seed"].value)
+    print("2")
     random.seed(seed)
+    print("3")
     checkstr=list("".join(random.choice(string.digits+string.ascii_lowercase) for _ in range(5)))
+    print("4")
     if not checkstr == form["checkstr"].value:
         print("Captcha's wrong")
-        raise SyntaxError()
+        raise Exception()
+    print("5")
     username=form["username"].value
-    try:
-        message=form["message"].value
-    except:
-        raise SyntaxError()
+    print("6")
+    message=form["message"].value
+    print("7")
     timestamp=int(time.time())
+    print("8")
     data={"name":"","markdown":message,"author":username,"date":timestamp}
+    print("9")
     storage.append("comments-%i"%aid,data)
+    print("10")
 except KeyError:
-
     pass
 
 
