@@ -8,7 +8,7 @@ class HTMLgen:
         self.titles=[]
         self.title=title
     def addArticle(self, name, markdown):
-        self.articles.append(markdown2.markdown(markdown))
+        self.articles.append(markdown2.markdown(markdown, extras=["tables","spoiler"]))
         self.titles.append(name)
     def renderSite(self):
         nav=""

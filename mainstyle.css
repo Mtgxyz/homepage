@@ -1,5 +1,5 @@
 @import "base.css";
-.spoiler {
+.spoilertitle {
   display: none;
   cursor: pointer;
 }

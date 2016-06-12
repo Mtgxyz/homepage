@@ -34,7 +34,7 @@ def getLayoutXML():
     tablerow = SubElement(table, "div")
     tablerow.set("class", "tablerow")
     navspoiler = SubElement(tablerow, "div")
-    navspoiler.set("class", "spoiler")
+    navspoiler.set("class", "spoilertitle")
     navspoiler.set("tabindex", "1")
     navspoiler.text = "Navigation"
     nav = SubElement(tablerow, "nav")
@@ -43,7 +43,7 @@ def getLayoutXML():
     main = SubElement(tablerow, "main")
     main.text="%(main)s"
     asidespoiler = SubElement(tablerow, "div")
-    asidespoiler.set("class", "spoiler")
+    asidespoiler.set("class", "spoilertitle")
     asidespoiler.set("tabindex", "2")
     asidespoiler.text="Aside information"
     aside = SubElement(tablerow, "aside")

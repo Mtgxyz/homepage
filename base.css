@@ -1,4 +1,4 @@
-.spoiler:focus + .spoilerContent {
+.spoilertitle:focus + .spoilerContent {
   display: block;
 }
 .spoilerContent {
@@ -59,4 +59,14 @@ aside {
 }
 article {
   background-color: #282828;
+}
+ul { padding-left:16px; }
+li { padding-left:16px; }
+.spoiler {
+  opacity: 0.0;
+  filter: alpha(opacity=0);
+}
+.spoiler:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
 }
