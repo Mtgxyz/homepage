@@ -18,6 +18,7 @@ try:
     random.seed(seed)
     print("3")
     checkstr=list("".join(random.choice(string.digits+string.ascii_lowercase) for _ in range(5)))
+    print(checkstr)
     print("4")
     if not checkstr == form["checkstr"].value:
         print("Captcha's wrong")
