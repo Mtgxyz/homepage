@@ -43,7 +43,7 @@ checkstr=list("".join(random.choice(string.digits+string.ascii_lowercase) for _ 
 image = ImageCaptcha()
 capt = image.generate(checkstr)
 html=htmlgen.HTMLgen(pagelayout.getLayoutXML().decode('utf-8'),"Comments")
-html.appendHTML("<form action=\"comments.py?aid=%i\" method=\"POST\""%aid)
+html.appendHTML("<form action=\"comments.py?aid=%i\" method=\"POST\">"%aid)
 html.appendHTML("<input type=\"hidden\" name=\"seed\" value=\"%i\" />"%seed)
 html.appendHTML("<input placeholder=\"Username\" name=\"username\" /><br />")
 html.appendHTML("<textarea name=\"message\" placeholder=\"Compose your message. Markdown is enabled.\" ></textarea><br />")
