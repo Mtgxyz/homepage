@@ -17,15 +17,15 @@ try:
     checkstr=list("".join(random.choice(string.digits+string.ascii_lowercase) for _ in range(5)))
     if not checkstr == form["checkstr"].value:
         print("Captcha's wrong")
-        raise Exception()
+        raise SyntaxError()
     username=form["username"].value
     message=form["message"].value
     timestamp=int(time.time())
     data={"name":"","markdown":message,"author":username,"date":timestamp}
     storage.append("comments-%i"%aid,data)
-except:
-    traceback.print_exc()
+except SyntaxError:
     pass
+
 
 seed=random.SystemRandom().randint(0,2**24)
 random.seed(seed)
