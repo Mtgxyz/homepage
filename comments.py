@@ -8,8 +8,8 @@ from io import BytesIO
 from captcha.image import ImageCaptcha
 import time
 print("Content-type: text/html\r\n\r\n")
-aid=form["aid"]
 form=cgi.FieldStorage()
+aid=form["aid"]
 try:
     seed=form["seed"]
     random.seed(seed)
