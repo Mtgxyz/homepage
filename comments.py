@@ -9,9 +9,9 @@ from captcha.image import ImageCaptcha
 import time, string
 print("Content-type: text/html\r\n\r\n")
 form=cgi.FieldStorage()
-aid=form["aid"].value
+aid=int(form["aid"].value)
 try:
-    seed=form["seed"].value
+    seed=int(form["seed"].value)
     random.seed(seed)
     checkstr=list("".join(random.choice(string.digits+string.ascii_lowercase) for _ in range(5)))
     if not checkstr == form["checkstr"].value:
