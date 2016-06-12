@@ -33,5 +33,5 @@ class HTMLgen:
             main=main+("<h2 id=\"%i\">%s</h2><p>Written on <time datetime=\"%s\">%s</time> by %s</p><article>%s</article>" %(x,self.titles[x],datetime.datetime.fromtimestamp(self.dates[x]).strftime("%Y-%m-%d %H:%M:%S"),datetime.datetime.fromtimestamp(self.dates[x]).strftime("%c"),self.authors[x],article))
             main=main+("<a href=\"comments.py?aid=%i\">Comments (%i)</a>") % (x, storage.count("comments-%i"%x))
             x=x-1
-        styleargs = {"title":self.title,"nav":nav,"main":main,"aside":asideHTML,"footer":"Copyright 2016 Morten"}
+        styleargs = {"title":self.title,"nav":nav,"main":main,"aside":self.asideHTML,"footer":"Copyright 2016 Morten"}
         return self.layout%styleargs
