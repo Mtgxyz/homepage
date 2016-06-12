@@ -23,7 +23,7 @@ try:
     timestamp=int(time.time())
     data={"name":"","markdown":message,"author":username,"date":timestamp}
     storage.append("comments-%i"%aid,data)
-except SyntaxError:
+except KeyError:
     pass
 
 
