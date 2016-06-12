@@ -21,7 +21,7 @@ try:
     username=form["username"].value
     message=form["message"].value
     timestamp=int(time.time())
-    data={"name":form["title"],"markdown":message,"author":username,"date":timestamp}
+    data={"name":cgi.escape(form["title"]),"markdown":cgi.escape(message),"author":cgi.escape(username),"date":timestamp}
     storage.append("comments-%i"%aid,data)
 except KeyError:
     pass
