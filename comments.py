@@ -17,7 +17,7 @@ try:
     print("2")
     random.seed(seed)
     print("3")
-    checkstr=list("".join(random.choice(string.digits+string.ascii_lowercase) for _ in range(5)))
+    checkstr="".join(random.choice(string.digits+string.ascii_lowercase) for _ in range(5))
     print(checkstr)
     print("4")
     if not checkstr == form["checkstr"].value:
@@ -40,7 +40,7 @@ except KeyError:
 
 seed=random.SystemRandom().randint(0,2**24)
 random.seed(seed)
-checkstr=list("".join(random.choice(string.digits+string.ascii_lowercase) for _ in range(5)))
+checkstr="".join(random.choice(string.digits+string.ascii_lowercase) for _ in range(5))
 image = ImageCaptcha()
 capt = image.generate(checkstr)
 html=htmlgen.HTMLgen(pagelayout.getLayoutXML().decode('utf-8'),"Comments")
