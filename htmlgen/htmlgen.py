@@ -21,7 +21,7 @@ class HTMLgen:
         self.asideHTML=text+self.asideHTML
     def appendHTML(self, text):
         self.asideHTML=self.asideHTML+text
-    def renderSite(self):
+    def renderSite(self, comments=False):
         nav=""
         x=len(self.titles)-1
         for title in self.titles[::-1]:
@@ -31,7 +31,11 @@ class HTMLgen:
         x=len(self.articles)-1
         for article in self.articles[::-1]:
             main=main+("<h2 id=\"%i\">%s</h2><p>Written on <time datetime=\"%s\">%s</time> by %s</p><article>%s</article>" %(x,self.titles[x],datetime.datetime.fromtimestamp(self.dates[x]).strftime("%Y-%m-%d %H:%M:%S"),datetime.datetime.fromtimestamp(self.dates[x]).strftime("%c"),self.authors[x],article))
-            main=main+("<a href=\"comments.py?aid=%i\">Comments (%i)</a>") % (x, storage.count("comments-%i"%x))
+            if not comments:
+                main=main+("<a href=\"comments.py?aid=%i\">Comments (%i)</a>") % (x, storage.count("comments-%i"%x))
             x=x-1
-        styleargs = {"title":self.title,"nav":nav,"main":main,"aside":self.asideHTML,"footer":"Copyright 2016 Morten"}
+        if not comments:
+            styleargs = {"title":self.title,"nav":nav,"main":main,"aside":self.asideHTML,"footer":"Copyright 2016 Morten"}
+        else:
+            styleargs = {"title":self.title,"nav":nav,"main":self.asideHTML+main,"aside":"","footer":"Copyright 2016 Morten"}
         return self.layout%styleargs
