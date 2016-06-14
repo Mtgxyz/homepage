@@ -7,7 +7,7 @@ count=storage.count("articles")
 for i in range(count):
     try:
         article=storage.get("articles",i)
-        if "homepage" in article["tags"]:
+        if "anime" in article["tags"]:
             html.addArticle(**article)
     except:
         html.addArticle(**storage.get("articles",i), aid=i)
