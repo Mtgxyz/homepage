@@ -10,7 +10,7 @@ for i in range(count):
         if "homepage" in article["tags"]:
             html.addArticle(**article)
     except:
-        html.addArticle(**storage.get("articles",i), aid=i)
+        html.addArticle(aid=i, **storage.get("articles",i))
 
 print("<!DOCTYPE html>")
 print(html.renderSite())

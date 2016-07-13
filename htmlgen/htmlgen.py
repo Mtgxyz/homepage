@@ -40,4 +40,4 @@ class HTMLgen:
             styleargs = {"title":self.title,"nav":nav,"main":main,"aside":self.asideHTML,"footer":"Copyright 2016 Morten"}
         else:
             styleargs = {"title":self.title,"nav":nav,"main":self.asideHTML+main,"aside":"","footer":"Copyright 2016 Morten"}
-        return self.layout%styleargs
+        return '\n'.join([line for line in (self.layout%styleargs).split('\n') if line.strip() != ''])
