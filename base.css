@@ -73,7 +73,7 @@ li { padding-left:16px; }
 a {
   color: #0FF;
 }
-blockquote {
+code {
   background-color: #000000;
   border-left: 1em solid green;
 }
