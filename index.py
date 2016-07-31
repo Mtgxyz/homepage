@@ -2,7 +2,6 @@
 from htmlgen import *
 import sys
 import storage
-print("Content-type: text/html\r\n\r\n")
 html=htmlgen.HTMLgen(pagelayout.getLayoutXML().decode('utf-8'),"Home Page")
 count=storage.count("articles")
 for i in range(count):
@@ -13,7 +12,8 @@ for i in range(count):
     except:
         html.addArticle(aid=i, **storage.get("articles",i))
 
-print("<!DOCTYPE html>")
+sys.stdout.buffer.write("Content-type: text/html\r\n\r\n".encode('utf8'))
+sys.stdout.buffer.write("<!DOCTYPE html>".encode('utf8'))
 sys.stdout.buffer.write(html.renderSite().encode('utf8'))
 sys.stdout.flush()
 #print(html.renderSite())

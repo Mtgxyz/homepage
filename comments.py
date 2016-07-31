@@ -9,7 +9,6 @@ import base64
 from io import BytesIO
 from captcha.image import ImageCaptcha
 import time, string
-print("Content-type: text/html\r\n\r\n")
 form=cgi.FieldStorage()
 aid=int(form["aid"].value)
 try:
@@ -46,7 +45,8 @@ count=storage.count("comments-%i"%aid)
 for i in range(count):
     html.addArticle(aid=aid,**(storage.get("comments-%i"%aid,i)))
 
-print("<!DOCTYPE html>")
+sys.stdout.buffer.write("Content-type: text/html\r\n\r\n".encode('utf8'))
+sys.stdout.buffer.write("<!DOCTYPE html>".encode('utf8'))
 sys.stdout.buffer.write(html.renderSite(True).encode('utf8'))
 sys.stdout.flush()
 #print(html.renderSite(True))
