@@ -15,4 +15,5 @@ for i in range(count):
 
 print("<!DOCTYPE html>")
 sys.stdout.buffer.write(html.renderSite().encode('utf8'))
+sys.stdout.flush()
 #print(html.renderSite())

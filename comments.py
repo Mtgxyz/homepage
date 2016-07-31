@@ -48,4 +48,5 @@ for i in range(count):
 
 print("<!DOCTYPE html>")
 sys.stdout.buffer.write(html.renderSite(True).encode('utf8'))
+sys.stdout.flush()
 #print(html.renderSite(True))
