@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from htmlgen import *
+import sys
 import storage
 print("Content-type: text/html\r\n\r\n")
 html=htmlgen.HTMLgen(pagelayout.getLayoutXML().decode('utf-8'),"Home Page")
@@ -13,4 +14,5 @@ for i in range(count):
         html.addArticle(aid=i, **storage.get("articles",i))
 
 print("<!DOCTYPE html>")
-print(html.renderSite())
+sys.stdout.buffer.write(html.renderSite().encode('utf8'))
+#print(html.renderSite())

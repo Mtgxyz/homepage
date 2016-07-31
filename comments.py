@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from htmlgen import *
 import traceback
+import sys
 import storage
 import cgi
 import random
@@ -46,4 +47,5 @@ for i in range(count):
     html.addArticle(aid=aid,**(storage.get("comments-%i"%aid,i)))
 
 print("<!DOCTYPE html>")
-print(html.renderSite(True))
+sys.stdout.buffer.write(html.renderSite(True).encode('utf8'))
+#print(html.renderSite(True))
